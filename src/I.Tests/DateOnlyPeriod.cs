@@ -1,4 +1,4 @@
-// Copyright 2025 by PeopleWare n.v..
+﻿// Copyright 2025 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -13,18 +13,18 @@ using PPWCode.Vernacular.Exceptions.V;
 
 namespace PPWCode.Util.Time.I.Tests;
 
-public class DateTimeOffsetPeriod : I.DateTimeOffsetPeriod
+public class DateOnlyPeriod : I.DateOnlyPeriod
 {
-    public DateTimeOffsetPeriod(DateTimeOffset? from, DateTimeOffset? to)
+    public DateOnlyPeriod(DateOnly? from, DateOnly? to)
         : base(from, to)
     {
     }
 
     /// <inheritdoc />
-    protected override SemanticException CreateInvalidExceptionFor(DateTimeOffset? from, DateTimeOffset? to)
-        => new ("ERROR_PERIOD_FROM_MUST_BE_STRICTLY_BEFORE_TO");
+    protected override SemanticException CreateInvalidExceptionFor(DateOnly? from, DateOnly? to)
+        => new("ERROR_PERIOD_FROM_MUST_BE_STRICTLY_BEFORE_TO");
 
     /// <inheritdoc />
-    protected override IPeriod<DateTimeOffset> Create(DateTimeOffset? from, DateTimeOffset? to)
-        => new DateTimeOffsetPeriod(from, to);
+    protected override IPeriod<DateOnly> Create(DateOnly? from, DateOnly? to)
+        => new DateOnlyPeriod(from, to);
 }

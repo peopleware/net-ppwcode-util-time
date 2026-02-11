@@ -163,7 +163,7 @@ namespace PPWCode.Util.Time.I
         /// </returns>
         public IList<TPeriod> GetPeriodsOverlappingAt(T startDate, T endDate)
         {
-            List<TPeriod> result = new ();
+            List<TPeriod> result = new();
             if (endDate.CompareTo(startDate) <= 0)
             {
                 return result;
@@ -332,7 +332,7 @@ namespace PPWCode.Util.Time.I
                 return [];
             }
 
-            List<IPeriod<T>> result = new ();
+            List<IPeriod<T>> result = new();
 
             LinkedList<TPeriod> ours = LinkedPeriods;
             LinkedListNode<TPeriod>? oursCurrent = ours.First;
@@ -412,7 +412,7 @@ namespace PPWCode.Util.Time.I
                 return Periods;
             }
 
-            List<IPeriod<T>> result = new ();
+            List<IPeriod<T>> result = new();
 
             LinkedList<TPeriod> ourPeriods = LinkedPeriods;
             LinkedListNode<TPeriod>? oursCurrent = ourPeriods.First;

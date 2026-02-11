@@ -20,5 +20,5 @@ public class DateOnlyPeriodHistory : PeriodHistory<DateOnlyPeriod, DateOnly>
 
     /// <inheritdoc />
     protected override DateOnlyPeriod Create(DateOnly? from, DateOnly? to)
-        => new (from, to);
+        => new(from, to);
 }

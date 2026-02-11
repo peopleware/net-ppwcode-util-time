@@ -117,7 +117,7 @@ public abstract class PeriodMultiHistoryTests<TPeriod, T> : BasePeriodTests<TPer
         // Arrange
         T startDate = CreatePoint(2017, 7, 1);
 
-        List<TPeriod> allPeriods = new ();
+        List<TPeriod> allPeriods = new();
         foreach (string? periodAsString in stringArray.Strings)
         {
             allPeriods.AddRange(ConvertStringToPeriods(startDate, periodAsString));

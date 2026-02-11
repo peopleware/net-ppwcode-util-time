@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\common-tests.props"/>
+
+    <ItemGroup>
+        <PackageReference Include="PPWCode.Util.Collection.I" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\I\PPWCode.Util.Time.I.csproj" />
+    </ItemGroup>
+
+</Project>

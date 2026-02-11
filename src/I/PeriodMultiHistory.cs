@@ -230,7 +230,7 @@ public abstract class PeriodMultiHistory<TPeriod, T>
             LinkedList<IPeriod<T>>? rightCoveringPeriods = Right?.GetOptimalCoveringPeriods(create);
             LinkedListNode<IPeriod<T>>? leftTailNode = leftCoveringPeriods?.Last;
             LinkedListNode<IPeriod<T>>? rightHeadNode = rightCoveringPeriods?.First;
-            LinkedList<IPeriod<T>> coveringPeriods = new ();
+            LinkedList<IPeriod<T>> coveringPeriods = new();
 
             if (Inner.Any())
             {
@@ -267,7 +267,7 @@ public abstract class PeriodMultiHistory<TPeriod, T>
 
                 // create new linked list
                 IPeriod<T> coveringPeriod = runningPeriod;
-                LinkedListNode<IPeriod<T>> coveringPeriodNode = new (coveringPeriod);
+                LinkedListNode<IPeriod<T>> coveringPeriodNode = new(coveringPeriod);
                 coveringPeriods.AddFirst(coveringPeriodNode);
             }
 

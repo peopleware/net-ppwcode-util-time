@@ -1,4 +1,4 @@
-// Copyright 2025 by PeopleWare n.v..
+﻿// Copyright 2025 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace PPWCode.Util.Time.I.Tests;
 
-public class DateOnlyPeriodHistoryTests : PeriodHistoryTests<DateOnlyPeriod, DateOnly>
+public class DateOnlyPeriodMultiHistoryTests : PeriodMultiHistoryTests<DateOnlyPeriod, DateOnly>
 {
     /// <inheritdoc />
     protected override string PointToString(DateOnly value)
@@ -25,7 +25,7 @@ public class DateOnlyPeriodHistoryTests : PeriodHistoryTests<DateOnlyPeriod, Dat
 
     /// <inheritdoc />
     protected override DateOnly CreatePoint(int year, int month, int day)
-        => new (year, month, day);
+        => new(year, month, day);
 
     /// <inheritdoc />
     protected override DateOnly AddToPoint(DateOnly date, int i)
@@ -33,13 +33,13 @@ public class DateOnlyPeriodHistoryTests : PeriodHistoryTests<DateOnlyPeriod, Dat
 
     /// <inheritdoc />
     protected override Regex PeriodRegex
-        => new (@"^\[\s*(\d{4}-\d{1,2}-\d{1,2}|null)\s*,\s*(\d{4}-\d{1,2}-\d{1,2}|null)\s*\[$", RegexOptions.Compiled);
+        => new(@"^\[\s*(?<point1>\d{4}-\d{1,2}-\d{1,2}|null)\s*,\s*(?<point2>\d{4}-\d{1,2}-\d{1,2}|null)\s*\[$", RegexOptions.Compiled);
 
     /// <inheritdoc />
     protected override DateOnlyPeriod CreatePeriod(DateOnly? from, DateOnly? to)
-        => new (from, to);
+        => new(from, to);
 
     /// <inheritdoc />
-    protected override PeriodHistory<DateOnlyPeriod, DateOnly> CreatePeriodHistory(IEnumerable<DateOnlyPeriod> periods)
-        => new DateOnlyPeriodHistory(periods);
+    protected override PeriodMultiHistory<DateOnlyPeriod, DateOnly> CreateMultiPeriodHistory(IEnumerable<IPeriod<DateOnly>> periods)
+        => new DateOnlyPeriodMultiHistory(periods.Select(p => CreatePeriod(p.From, p.To)));
 }

@@ -27,7 +27,7 @@ public class DateOnlyPeriodTests : PeriodTests<DateOnlyPeriod, DateOnly>
 
     /// <inheritdoc />
     protected override DateOnly CreatePoint(int year, int month, int day)
-        => new (year, month, day);
+        => new(year, month, day);
 
     /// <inheritdoc />
     protected override DateOnly AddToPoint(DateOnly date, int i)
@@ -35,11 +35,11 @@ public class DateOnlyPeriodTests : PeriodTests<DateOnlyPeriod, DateOnly>
 
     /// <inheritdoc />
     protected override DateOnlyPeriod CreatePeriod(DateOnly? from, DateOnly? to)
-        => new (from, to);
+        => new(from, to);
 
     /// <inheritdoc />
     protected override Regex PeriodRegex
-        => new (@"^\[\s*(?<point1>\d{4}-\d{1,2}-\d{1,2}|null)\s*,\s*(?<point2>\d{4}-\d{1,2}-\d{1,2}|null)\s*\[$", RegexOptions.Compiled);
+        => new(@"^\[\s*(?<point1>\d{4}-\d{1,2}-\d{1,2}|null)\s*,\s*(?<point2>\d{4}-\d{1,2}-\d{1,2}|null)\s*\[$", RegexOptions.Compiled);
 
     [TestCase("[null,null[", "2025-01-01", ExpectedResult = true)]
     [TestCase("[2024-09-10,null[", "2025-01-01", ExpectedResult = true)]

@@ -74,7 +74,7 @@ public abstract class BasePeriodTests<TPeriod, T> : BaseFixture
     public TPeriod[] ConvertStringToPeriods(T startDate, string intervalString)
     {
         ReadOnlySpan<char> stateChars = intervalString.AsSpan();
-        Stack<TPeriod> periods = new ();
+        Stack<TPeriod> periods = new();
         T currentDate = startDate;
         TPeriod? current = null;
         char? previous = null;
@@ -132,7 +132,7 @@ public abstract class BasePeriodTests<TPeriod, T> : BaseFixture
         }
 
         // convert to linked list
-        LinkedList<IPeriod<T>> linkedPeriods = new (periods.OrderBy(p => p.CoalesceFrom));
+        LinkedList<IPeriod<T>> linkedPeriods = new(periods.OrderBy(p => p.CoalesceFrom));
         LinkedListNode<IPeriod<T>>? firstNode = linkedPeriods.First;
         LinkedListNode<IPeriod<T>>? lastNode = linkedPeriods.Last;
 
@@ -141,7 +141,7 @@ public abstract class BasePeriodTests<TPeriod, T> : BaseFixture
 
         // loop through linked list
         T? endDate = lastNode.Value.To;
-        StringBuilder sb = new ();
+        StringBuilder sb = new();
         for (T date = startDate; endDate is null || (date.CompareTo(endDate.Value) < 0); date = AddToPoint(date, 1))
         {
             IPeriod<T>? period = linkedPeriods.FirstOrDefault(p => p.Contains(date));

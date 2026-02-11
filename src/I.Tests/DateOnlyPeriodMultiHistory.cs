@@ -9,22 +9,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using PPWCode.Vernacular.Exceptions.V;
-
 namespace PPWCode.Util.Time.I.Tests;
 
-public class DateOnlyPeriod : I.DateOnlyPeriod
+public class DateOnlyPeriodMultiHistory : PeriodMultiHistory<DateOnlyPeriod, DateOnly>
 {
-    public DateOnlyPeriod(DateOnly? from, DateOnly? to)
-        : base(from, to)
+    public DateOnlyPeriodMultiHistory(IEnumerable<DateOnlyPeriod> periods)
+        : base(periods)
     {
     }
 
-    /// <inheritdoc />
-    protected override SemanticException CreateInvalidExceptionFor(DateOnly? from, DateOnly? to)
-        => new ("ERROR_PERIOD_FROM_MUST_BE_STRICTLY_BEFORE_TO");
-
-    /// <inheritdoc />
-    protected override IPeriod<DateOnly> Create(DateOnly? from, DateOnly? to)
-        => new DateOnlyPeriod(from, to);
+    protected override DateOnlyPeriod Create(DateOnly? from, DateOnly? to)
+        => new(from, to);
 }

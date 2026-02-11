@@ -20,7 +20,7 @@ public class DateTimeOffsetPeriodTests : PeriodTests<DateTimeOffsetPeriod, DateT
 {
     /// <inheritdoc />
     protected override DateTimeOffsetPeriod CreatePeriod(DateTimeOffset? from, DateTimeOffset? to)
-        => new (from, to);
+        => new(from, to);
 
     /// <inheritdoc />
     protected override DateTimeOffset StringToPoint(string value)
@@ -32,19 +32,19 @@ public class DateTimeOffsetPeriodTests : PeriodTests<DateTimeOffsetPeriod, DateT
 
     /// <inheritdoc />
     protected override DateTimeOffset CreatePoint(int year, int month, int day)
-        => new (year, month, day, 2, 25, 37, TimeSpan.FromHours(-7));
+        => new(year, month, day, 2, 25, 37, TimeSpan.FromHours(-7));
 
     /// <inheritdoc />
     protected override DateTimeOffset AddToPoint(DateTimeOffset point, int i)
         => point.AddHours(30);
 
     protected override Regex PeriodRegex
-        => new (@"^\[(?<point1>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\-|\+)\d{2}:\d{2}|null),(?<point2>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\-|\+)\d{2}:\d{2}|null)\[$", RegexOptions.Compiled);
+        => new(@"^\[(?<point1>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\-|\+)\d{2}:\d{2}|null),(?<point2>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\-|\+)\d{2}:\d{2}|null)\[$", RegexOptions.Compiled);
 
     [Test]
     public void check_point_to_string_to_point_1()
     {
-        DateTimeOffset point = new (2024, 10, 23, 17, 41, 57, TimeSpan.FromHours(-7));
+        DateTimeOffset point = new(2024, 10, 23, 17, 41, 57, TimeSpan.FromHours(-7));
         string display = "2024-10-23T17:41:57-07:00";
         Assert.That(PointToString(point), Is.EqualTo(display));
         Assert.That(StringToPoint(display), Is.EqualTo(point));
@@ -53,7 +53,7 @@ public class DateTimeOffsetPeriodTests : PeriodTests<DateTimeOffsetPeriod, DateT
     [Test]
     public void check_point_to_string_to_point_2()
     {
-        DateTimeOffset point = new (2024, 3, 4, 8, 9, 2, TimeSpan.FromHours(2.5));
+        DateTimeOffset point = new(2024, 3, 4, 8, 9, 2, TimeSpan.FromHours(2.5));
         string display = "2024-03-04T08:09:02+02:30";
         Assert.That(PointToString(point), Is.EqualTo(display));
         Assert.That(StringToPoint(display), Is.EqualTo(point));
