@@ -1,4 +1,4 @@
-﻿// Copyright 2024 by PeopleWare n.v..
+// Copyright 2026 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -11,17 +11,14 @@
 
 namespace PPWCode.Util.Time.I;
 
-public class TimeProvider<T> : ITimeProvider<T>
-    where T : struct, IComparable<T>, IEquatable<T>
+/// <inheritdoc />
+public class DateTimeProvider : ITimeProvider<DateTime>
 {
-    private readonly Func<T> _lambda;
-
-    public TimeProvider(Func<T> lambda)
-    {
-        _lambda = lambda;
-    }
+    /// <inheritdoc />
+    public DateTime Now
+        => DateTime.Now;
 
     /// <inheritdoc />
-    public T Now
-        => _lambda();
+    public DateTime UtcNow
+        => DateTime.UtcNow;
 }

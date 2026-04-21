@@ -11,10 +11,14 @@
 
 namespace PPWCode.Util.Time.I;
 
-public class DateTimeOffsetTimeProvider : TimeProvider<DateTimeOffset>
+/// <inheritdoc />
+public class DateTimeOffsetTimeProvider : ITimeProvider<DateTimeOffset>
 {
-    public DateTimeOffsetTimeProvider(Func<DateTimeOffset> lambda)
-        : base(lambda)
-    {
-    }
+    /// <inheritdoc />
+    public DateTimeOffset Now
+        => DateTimeOffset.Now;
+
+    /// <inheritdoc />
+    public DateTimeOffset UtcNow
+        => DateTimeOffset.UtcNow;
 }
