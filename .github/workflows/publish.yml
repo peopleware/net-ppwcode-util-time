@@ -38,14 +38,14 @@ jobs:
       - name: Restore dependencies
         shell: bash
         run: |
-          dotnet restore PPWCode.Util.Time.sln \
+          dotnet restore PPWCode.Util.Time.slnx \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Util.Time.sln \
+          dotnet build PPWCode.Util.Time.slnx \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true
@@ -53,7 +53,7 @@ jobs:
       - name: Test
         shell: bash
         run: |
-          dotnet test PPWCode.Util.Time.sln \
+          dotnet test PPWCode.Util.Time.slnx \
             --configuration Release \
             --no-build \
             --verbosity normal \
@@ -228,14 +228,14 @@ jobs:
         # ContinuousIntegrationBuild=true excludes full-framework
         # builds on Linux and macOS
         run: |
-          dotnet restore PPWCode.Util.Time.sln \
+          dotnet restore PPWCode.Util.Time.slnx \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Util.Time.sln \
+          dotnet build PPWCode.Util.Time.slnx \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true \
@@ -246,7 +246,7 @@ jobs:
       - name: Pack
         shell: bash
         run: |
-          dotnet pack PPWCode.Util.Time.sln \
+          dotnet pack PPWCode.Util.Time.slnx \
             --configuration Release \
             --no-build \
             --output ./artifacts \
