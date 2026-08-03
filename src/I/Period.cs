@@ -10,6 +10,7 @@
 // limitations under the License.
 
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 using PPWCode.Vernacular.Exceptions.V;
 using PPWCode.Vernacular.Semantics.V;
@@ -57,12 +58,15 @@ public abstract class Period<T>
     }
 
     /// <inheritdoc cref="IDataContainer.IsDataPresent" />
+    [JsonIgnore]
     public override bool IsDataPresent
         => From is not null || To is not null;
 
+    [JsonIgnore]
     public virtual T CoalesceFrom
         => From ?? MinValue;
 
+    [JsonIgnore]
     public virtual T CoalesceTo
         => To ?? MaxValue;
 
@@ -129,6 +133,7 @@ public abstract class Period<T>
     }
 
     /// <inheritdoc />
+    [JsonIgnore]
     public T[] PointsInTime
         => [CoalesceFrom, CoalesceTo];
 

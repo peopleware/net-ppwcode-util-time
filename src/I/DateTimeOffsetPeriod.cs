@@ -9,6 +9,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Text.Json.Serialization;
+
 namespace PPWCode.Util.Time.I;
 
 public abstract class DateTimeOffsetPeriod
@@ -26,10 +28,12 @@ public abstract class DateTimeOffsetPeriod
     }
 
     /// <inheritdoc />
+    [JsonIgnore]
     protected override DateTimeOffset MinValue
         => DateTimeOffset.MinValue;
 
     /// <inheritdoc />
+    [JsonIgnore]
     protected override DateTimeOffset MaxValue
         => DateTimeOffset.MaxValue;
 }

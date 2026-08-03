@@ -9,6 +9,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+using System.Text.Json.Serialization;
+
 namespace PPWCode.Util.Time.I;
 
 public abstract class DateOnlyPeriod
@@ -26,10 +28,12 @@ public abstract class DateOnlyPeriod
     }
 
     /// <inheritdoc />
+    [JsonIgnore]
     protected override DateOnly MinValue
         => DateOnly.MinValue;
 
     /// <inheritdoc />
+    [JsonIgnore]
     protected override DateOnly MaxValue
         => DateOnly.MaxValue;
 }
